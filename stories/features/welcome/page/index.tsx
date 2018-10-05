@@ -13,12 +13,12 @@ import locale from './fakeLocale'
 
 // Images
 const braveLogo = require('../../../assets/img/lion_logo.svg')
-const paymentsImage = require('../../../assets/img/payments.png')
-const importImage = require('../../../assets/img/import.png')
-const shieldsImage = require('../../../assets/img/shields.png')
-const themeImage = require('../../../assets/img/theme.png')
-const searchImage = require('../../../assets/img/search.png')
-const background = require('../../../assets/img/welcomebg.svg')
+const paymentsImage = require('../../../assets/img/welcome_rewards.svg')
+const importImage = require('../../../assets/img/welcome_import.svg')
+const shieldsImage = require('../../../assets/img/welcome_shields.svg')
+const themeImage = require('../../../assets/img/welcome_theme.svg')
+const searchImage = require('../../../assets/img/welcome_search.svg')
+const background = require('../../../assets/img/welcome_bg.svg')
 
 // Fonts
 import '../../../assets/fonts/muli.css'
@@ -58,6 +58,7 @@ class WelcomePage extends React.PureComponent<{}, WelcomePageState> {
           size='large'
           text={locale.letsGo}
           onClick={this.onClickLetsGo}
+          icon={{ position: 'after', image: <ArrowRightIcon /> }}
         />
       </Welcome.Content>
     )
@@ -81,7 +82,7 @@ class WelcomePage extends React.PureComponent<{}, WelcomePageState> {
           </Select>
           <Button
             level='primary'
-            type={this.state.fakeBookmarksImported ? 'default' : 'accent'}
+            type={this.state.fakeBookmarksImported ? 'accent' : 'accent'}
             size='large'
             text={this.state.fakeBookmarksImported ? locale.imported : locale.import}
             onClick={this.onClickImport}
@@ -129,11 +130,10 @@ class WelcomePage extends React.PureComponent<{}, WelcomePageState> {
           <Select id='theme' type='light' value='default'>
             <div data-value='default'>Default Theme</div>
             <div data-value='dark'>Dark Theme</div>
-            <div data-value='night'>Night Theme</div>
           </Select>
           <Button
             level='primary'
-            type={this.state.fakeChangedDefaultTheme ? 'default' : 'accent'}
+            type={this.state.fakeChangedDefaultTheme ? 'accent' : 'accent'}
             size='large'
             text={this.state.fakeChangedDefaultTheme ? locale.confirmed : locale.confirm}
             onClick={this.onClickChooseYourTheme}
@@ -225,6 +225,7 @@ class WelcomePage extends React.PureComponent<{}, WelcomePageState> {
                 <Button
                   level='secondary'
                   type='default'
+                  size='medium'
                   onClick={this.onClickNext}
                   text={locale.next}
                   icon={{ position: 'after', image: <ArrowRightIcon /> }}
@@ -234,6 +235,7 @@ class WelcomePage extends React.PureComponent<{}, WelcomePageState> {
                 <Button
                   level='secondary'
                   type='default'
+                  size='medium'
                   onClick={this.onClickDone}
                   text={locale.done}
                 />
@@ -268,16 +270,20 @@ class WelcomePage extends React.PureComponent<{}, WelcomePageState> {
 
   onClickImport = () => {
     this.setState({ fakeBookmarksImported: !this.state.fakeBookmarksImported })
+    // prob not the correct syntax for this behavior, but a reminder that clicking this button executes functionality and then auto proceed to next screen
+    this.setState({ currentScreen: this.state.currentScreen + 1 })
     console.log('IMPORTED!')
   }
 
   onClickConfirmDefaultSearchEngine = () => {
     this.setState({ fakeChangedSearchEngine: !this.state.fakeChangedSearchEngine })
+    this.setState({ currentScreen: this.state.currentScreen + 1 })
     console.log('CHANGED DEFAULT SEARCH ENGINE!')
   }
 
   onClickChooseYourTheme = () => {
     this.setState({ fakeChangedDefaultTheme: !this.state.fakeChangedDefaultTheme })
+    this.setState({ currentScreen: this.state.currentScreen + 1 })
     console.log('NEW THEME CHOOSED')
   }
 
@@ -286,15 +292,15 @@ class WelcomePage extends React.PureComponent<{}, WelcomePageState> {
       case 1:
         return '100%'
       case 2:
-        return '150%'
-      case 3:
         return '200%'
-      case 4:
-        return '250%'
-      case 5:
+      case 3:
         return '300%'
+      case 4:
+        return '400%'
+      case 5:
+        return '500%'
       case 6:
-        return '350%'
+        return '600%'
       default:
         return '100%'
     }
@@ -314,7 +320,10 @@ class WelcomePage extends React.PureComponent<{}, WelcomePageState> {
             <div
               style={{
                 maxWidth: 'inherit',
-                minHeight: '540px'
+                minHeight: '540px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
               }}
             >
               {this.firstScreen}

@@ -66,7 +66,7 @@ const getThemeColors = (p: ThemedStyledProps<Props>) => {
 const StyledButton = styled<Props, 'button'>('button')`
   ${getThemeColors}
   --button-state-color: var(--button-main-color);
-  --icon-size: ${largeMediumSmall('18px', '16px', '14px')};
+  --icon-size: ${largeMediumSmall('20px', '16px', '12px')};
   --icon-spacing: ${largeMediumSmall('6px', '6px', '6px')};
   --webkit-appearance: none;
   box-sizing: border-box;
@@ -115,8 +115,8 @@ export const StyledText = styled<Props, 'div'>('div')`
   display: flex;
   align-items: center;
   text-align: center;
-  letter-spacing: 0;
-  font-weight: 600;
+  letter-spacing: 0px;
+  font-weight: 500;
   text-transform: ${p => p.size === 'call-to-action' ? 'uppercase' : 'none'};
   line-height: 1;
 `
