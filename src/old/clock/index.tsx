@@ -6,7 +6,6 @@ import * as React from 'react'
 
 import {
    StyledClock,
-   StyledPeriod,
    StyledTime,
    StyledTimeSeparator
  } from './style'
@@ -85,7 +84,6 @@ class Clock extends React.PureComponent<ClockProps, ClockState> {
     return (
       <StyledClock id={id} customStyle={customStyle}>
         <StyledTime>{this.formattedTime}</StyledTime>
-        <StyledPeriod>{this.formattedTimePeriod}</StyledPeriod>
       </StyledClock>
     )
   }

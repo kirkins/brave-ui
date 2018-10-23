@@ -6,6 +6,8 @@ import styled from 'styled-components'
 import { ClockProps } from './index'
 import { setTheme } from '../../helpers'
 
+import '../../../stories/assets/fonts/poppins.css'
+
 const StyledClock = styled.div`
   color: ${(p: ClockProps) => setTheme(p.customStyle, 'color') || 'white'};
   box-sizing: border-box;
@@ -14,30 +16,16 @@ const StyledClock = styled.div`
   display: flex;
   cursor: default;
   -webkit-font-smoothing: antialiased;
-  font-family: inherit;
+  font-family: Poppins, sans-serif;
 ` as any
 
 const StyledTime = styled.span`
   box-sizing: border-box;
   letter-spacing: 0;
-  font-size: 75px;
-  font-weight: 200;
-  color: inherit;
-  font-family: inherit;
+  font-size: 90px;
+  font-weight: 300;
+  color: white;
   display: inline-flex;
-` as any
-
-const StyledPeriod = styled.span`
-  box-sizing: border-box;
-  color: inherit;
-  font-family: inherit;
-  display: inline-block;
-  font-size: 20px;
-  letter-spacing: -0.2px;
-  font-weight: 200;
-  margin-top: 8px;
-  margin-left: 3px;
-  vertical-align: top;
 ` as any
 
 const StyledTimeSeparator = styled.span`
@@ -53,6 +41,5 @@ const StyledTimeSeparator = styled.span`
 export {
   StyledClock,
   StyledTime,
-  StyledPeriod,
   StyledTimeSeparator
 }
